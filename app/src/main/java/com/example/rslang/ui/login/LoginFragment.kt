@@ -1,13 +1,11 @@
-package com.example.rslang.ui.ui.login
+package com.example.rslang.ui.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
@@ -45,10 +43,14 @@ class LoginFragment : Fragment() {
         val loadingProgressBar = loading
         loginButton.setOnClickListener {
             viewModelScope.launch {
-                val response = loginViewModel.sendLoginRequest(username.text.toString(), password.text.toString())
+                loadingProgressBar.visibility = VISIBLE
+                val response = loginViewModel.sendLoginRequest(
+                    username.text.toString(),
+                    password.text.toString()
+                )
                 val appContext = context?.applicationContext
-                var loginResponse =  response.await().body()
-                Toast.makeText(appContext, loginResponse?.message, Toast.LENGTH_LONG)
+                loginButton.isEnabled=false
+                var loginResponse = response.await().body()
                 val intent = Intent(appContext, MainActivity::class.java)
                 startActivity(intent)
             }
@@ -59,7 +61,7 @@ class LoginFragment : Fragment() {
     private fun updateUiWithUser() {
         // TODO : initiate successful logged in experience
         val appContext = context?.applicationContext ?: return
-        Toast.makeText(appContext,"asd", Toast.LENGTH_LONG).show()
+        Toast.makeText(appContext, "asd", Toast.LENGTH_LONG).show()
     }
 
     private fun showLoginFailed(@StringRes errorString: Int) {

@@ -1,4 +1,4 @@
-package com.example.rslang.ui.ui.login
+package com.example.rslang.ui.login
 
 import androidx.lifecycle.ViewModel
 import com.example.rslang.httpService.ApiClientImpl

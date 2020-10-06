@@ -2,7 +2,7 @@ package com.example.rslang
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.rslang.ui.ui.login.LoginFragment
+import com.example.rslang.ui.login.LoginFragment
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

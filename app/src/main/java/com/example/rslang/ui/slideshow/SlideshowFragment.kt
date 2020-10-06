@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.rslang.R
-import com.example.rslang.ui.ui.login.LoginFragment
 
 class SlideshowFragment : Fragment() {
 
